@@ -1,0 +1,258 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+
+a {
+	text-decoration: none;
+	color: #ffffff;
+}
+
+.contenedor {
+	width: 100%;
+	min-height: 100vh;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: minmax(90px, 90px) auto;
+	grid-template-rows: 60px auto;
+	grid-template-areas: "header header"
+						 "menu contenido";
+	transition: all .3s ease;
+}
+
+.contenedor.active {
+	grid-template-columns: minmax(300px, 18%) auto;
+}
+
+/* ---- ---- ---- HEADER ---- ---- ---- */
+.header {
+	grid-area: header;
+	background: #000000e5;
+	padding: 0 20px;
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	align-items: center;
+	justify-content: space-between;
+	grid-gap: 20px;
+	grid-template-areas: "logo busqueda iconos";
+}
+
+.header .contenedor-logo {
+	grid-area: logo;
+	display: flex;
+	align-items: center;
+}
+
+.header .contenedor-logo .boton-menu {
+	border: 1px solid #000000e5;
+	padding: 10px;
+	background: none;
+	cursor: pointer;
+	font-size: 18px;
+	border-radius: 15px;
+	width: 50px;
+	height: 50px;
+	margin-right: 20px;
+}
+
+.boton-menu .fas.fa-bars {
+	color: #ffffffe5;
+}
+.header .contenedor-logo .boton-menu:hover {
+	background: #00ffd0;
+}
+
+.header .contenedor-logo .logo .fas {
+	background: #00ffd0;
+	padding: 7px 12px;
+	border-radius: 7px;
+	font-size: 8px;
+	color: #000000e5;
+	position: relative;
+	top: -4px;
+	margin-right: 4px;
+}
+
+.header .contenedor-logo .logo {
+	font-family: 'Bebas Neue', cursive;
+	font-size: 15px;
+	position: relative;
+	top: 2px;
+}
+
+.header .barra-busqueda {
+	grid-area: busqueda;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.header .barra-busqueda input {
+	min-width: 60%;
+	border-radius: 15px;
+	padding: 0 15px;
+	height: 35px;
+	line-height: 35px;
+	border: 1px solid #ffffffe5;
+	font-size: 16px;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.header .barra-busqueda button {
+	height: 36px;
+	border-radius: 15px;
+	border: 1px solid #000000e5;
+	border-left: none;
+	color: #ffffffe5;
+	background: none;
+	padding: 0 25px;
+	cursor: pointer;
+}
+
+.header .barra-busqueda button:hover {
+	background: #00ffd0;
+}
+
+.header .botones-header {
+	grid-area: iconos;
+	display: flex;
+	align-items: center;
+}
+
+.header .botones-header button {
+	background: none;
+	border: 1px solid #000000e5;
+	width: 40px;
+	height: 40px;
+	font-size: 18px;
+	padding: 7px 12px;
+	border-radius: 15px;
+	color: #ffffffe5;
+	margin-right: 20px;
+	cursor: pointer;
+}
+
+.header .botones-header button:hover {
+	background: #00ffd0;
+}
+/* ---- ---- ---- Menu Lateral ---- ---- ---- */
+
+.menu-lateral {
+	grid-area: menu;
+	background: #000000e5;
+	overflow: hidden;
+}
+
+.menu-lateral a {
+	display: block;
+	padding: 15px 35px;
+	color: #ffffffe5;
+	min-width: 800px;
+}
+
+.menu-lateral a:hover {
+	background: #00ffd0;
+}
+
+.menu-lateral a.active {
+	background:none;
+	font-weight: bold;
+}
+
+.menu-lateral .fas {
+	color: #ffffffe5;
+	margin-right: 32px;
+	width: 20px;
+	text-align: center;
+}
+
+.menu-lateral a.active .fas {
+	color: #00ffd0;
+}
+
+.menu-lateral hr {
+	margin: 20px 0;
+	border: 1px solid #ffffffe5;
+}
+
+/* ---- ---- ---- Contenido Principal ---- ---- ---- */
+.main {
+	grid-area: contenido;
+	background: #000000e5;
+	padding: 0px;
+}
+
+.main .titulo {
+	margin-bottom: 0px;
+}
+
+.main .grid-videos {
+	display: grid;
+	grid-gap: 1px 4px;
+	grid-template-columns: repeat(3, 1fr);
+}
+
+.main .grid-videos .video {
+	width: 100%;
+	display: block;
+}
+
+.main .grid-videos .video img {
+	width: 100%;
+	border-radius: 20px;
+}
+
+/* ---- ---- ---- Mediaqueries ---- ---- ---- */
+@media screen and (max-width: 1200px) {
+	.main .grid-videos {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	.header .contenedor-logo .logo span {
+		display: none;
+	}
+
+	.header .barra-busqueda input {
+		min-width: 70%;
+	}
+}
+
+@media screen and (max-width: 992px) {
+	.main .grid-videos {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.contenedor {
+		grid-template-rows: auto;
+	}
+
+	.header {
+		padding: 10px;
+		grid-template-columns: auto auto;
+		justify-content: space-between;
+		grid-template-areas: "logo iconos"
+							 "busqueda busqueda";
+	}
+
+	.header .contenedor-logo .logo span {
+		display: inline;
+	}
+
+	.header .barra-busqueda input {
+		min-width: auto;
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 320px) {
+	.main .grid-videos {
+		grid-template-columns: 1fr;
+	}
+}
